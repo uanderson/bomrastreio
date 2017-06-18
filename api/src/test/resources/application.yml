@@ -1,0 +1,51 @@
+app:
+  correios:
+    user: ECT
+    password: SRO
+    search-type: L
+    result-type: T
+    language: 101
+  mail:
+    max-attempts: 1
+    max-interval: 30000
+    default-sender: rastreador@bomrastreio.com.br
+    default-personal: Rastreador BomRastreio
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:bomrastreio;DB_CLOSE_ON_EXIT=FALSE
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+    serialization:
+      indent_output: true
+  mail:
+    host: smtp.zoho.com
+    username: rastreador@bomrastreio.com.br
+    password: $9CJTK!l
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+          socket-factory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
+keycloak:
+  realm: bomrastreio
+  bearer-only: true
+  auth-server-url: https://conta.bomrastreio.com.br/auth
+  ssl-required: external
+  resource: bomrastreio-api
+  cors: true
+  credentials:
+    secret: 970deb35-d333-48e2-aea6-22736442b4c2
+  securityConstraints:
+    - securityCollections:
+      - authRoles:
+            - api_access
+        patterns:
+            - /
+server:
+  port: 8082

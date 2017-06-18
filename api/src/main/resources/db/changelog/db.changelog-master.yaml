@@ -1,0 +1,318 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: uanderson
+      changes:
+        - createTable:
+            tableName: object
+            columns:
+              - column:
+                  name: id
+                  type: varchar(13)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: eta
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: owner
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_by
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 2
+      author: uanderson
+      changes:
+        - renameColumn:
+            tableName: object
+            oldColumnName: owner
+            newColumnName: addressee
+            columnDataType: varchar(255)
+        - addNotNullConstraint:
+            tableName: object
+            columnName: addressee
+            columnDataType: varchar(255)
+
+  - changeSet:
+      id: 3
+      author: uanderson
+      changes:
+        - addColumn:
+            tableName: object
+            columns:
+              - column:
+                  name: json
+                  type: text
+        - sql:
+            sql: update object set json = ''
+        - addNotNullConstraint:
+            tableName: object
+            columnName: json
+            columnDataType: text
+
+  - changeSet:
+      id: 4
+      author: uanderson
+      changes:
+        - dropPrimaryKey:
+            tableName: object
+
+  - changeSet:
+      id: 5
+      author: uanderson
+      changes:
+        - renameColumn:
+            tableName: object
+            oldColumnName: id
+            newColumnName: code
+            columnDataType: varchar(13)
+        - addNotNullConstraint:
+            tableName: object
+            columnName: code
+            columnDataType: varchar(13)
+
+  - changeSet:
+      id: 6
+      author: uanderson
+      changes:
+        - addColumn:
+            tableName: object
+            columns:
+              - column:
+                  name: id
+                  type: varchar(36)
+        - sql:
+            sql: update object set id = code
+        - addNotNullConstraint:
+            tableName: object
+            columnName: id
+            columnDataType: varchar(36)
+
+  - changeSet:
+      id: 7
+      author: uanderson
+      changes:
+        - addPrimaryKey:
+            tableName: object
+            columnNames: id
+
+  - changeSet:
+      id: 8
+      author: uanderson
+      changes:
+        - addColumn:
+            tableName: object
+            columns:
+              - column:
+                  name: tenant
+                  type: varchar(255)
+        - sql:
+            sql: update object set tenant = ''
+        - addNotNullConstraint:
+            tableName: object
+            columnName: tenant
+            columnDataType: varchar(255)
+
+  - changeSet:
+      id: 9
+      author: uanderson
+      changes:
+      - createIndex:
+          columns:
+          - column:
+              name: tenant
+              type: varchar(255)
+          - column:
+              name: code
+              type: varchar(13)
+          indexName: idx_object_tenant_code
+          tableName: object
+
+  - changeSet:
+      id: 10
+      author: uanderson
+      changes:
+      - dropIndex:
+          indexName: idx_object_tenant_code
+          tableName: object
+      - createIndex:
+          columns:
+          - column:
+              name: tenant
+              type: varchar(255)
+          - column:
+              name: code
+              type: varchar(13)
+          indexName: idx_object_tenant_code
+          tableName: object
+          unique: true
+
+  - changeSet:
+      id: 11
+      author: uanderson
+      changes:
+        - addColumn:
+            tableName: object
+            columns:
+              - column:
+                  name: note
+                  type: text(1000)
+
+  - changeSet:
+      id: 12
+      author: uanderson
+      changes:
+        - createTable:
+            tableName: setting
+            columns:
+              - column:
+                  name: id
+                  type: varchar(36)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: setting_key
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: value
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tenant
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_by
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+        - createIndex:
+            columns:
+            - column:
+                name: tenant
+                type: varchar(255)
+            - column:
+                name: setting_key
+                type: varchar(255)
+            indexName: idx_setting_tenant_setting_key
+            tableName: setting
+            unique: true
+
+  - changeSet:
+      id: 13
+      author: uanderson
+      changes:
+        - createTable:
+            tableName: digest
+            columns:
+              - column:
+                  name: id
+                  type: varchar(36)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: type
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: reference
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tenant
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_by
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_by
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 14
+      author: uanderson
+      changes:
+        - sql:
+            sql: update setting set setting_key = 'NOTIFICATION' where setting_key = 'ENABLE_NOTIFICATION'
+
+  - changeSet:
+      id: 15
+      author: uanderson
+      changes:
+        - modifyDataType:
+            tableName: object
+            columnName: eta
+            newDataType: datetime

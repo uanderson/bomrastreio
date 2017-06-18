@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings
+  xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  version="2.1">
+
+  <jaxb:bindings schemaLocation="https://webservice.correios.com.br/service/rastro/Rastro_schema1.xsd">
+    <jaxb:schemaBindings>
+      <jaxb:package name="br.com.bomrastreio.api.correios.trace.wsdl"/>
+    </jaxb:schemaBindings>
+
+    <!-- SingleTraceResponseWrapper -->
+    <jaxb:bindings node="//xs:complexType[@name='buscaEventosResponse']">
+      <jaxb:class name="SingleTraceResponseWrapper"/>
+
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventosResponse']//xs:element[@name='return']">
+        <jaxb:property name="response"/>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- MultipleTraceResponseWrapper -->
+    <jaxb:bindings node="//xs:complexType[@name='buscaEventosListaResponse']">
+      <jaxb:class name="MultipleTraceResponseWrapper"/>
+
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventosListaResponse']//xs:element[@name='return']">
+        <jaxb:property name="response"/>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- SingleTraceRequest -->
+    <jaxb:bindings node="//xs:complexType[@name='buscaEventos']">
+      <jaxb:class name="SingleTraceRequest"/>
+
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventos']//xs:element[@name='usuario']">
+        <jaxb:property name="user"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventos']//xs:element[@name='senha']">
+        <jaxb:property name="password"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventos']//xs:element[@name='tipo']">
+        <jaxb:property name="searchType"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventos']//xs:element[@name='resultado']">
+        <jaxb:property name="searchResult"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventos']//xs:element[@name='lingua']">
+        <jaxb:property name="language"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventos']//xs:element[@name='objetos']">
+        <jaxb:property name="objectIds"/>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- MultipleTraceRequest -->
+    <jaxb:bindings node="//xs:complexType[@name='buscaEventosLista']">
+      <jaxb:class name="MultipleTraceRequest"/>
+
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventosLista']//xs:element[@name='usuario']">
+        <jaxb:property name="user"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventosLista']//xs:element[@name='senha']">
+        <jaxb:property name="password"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventosLista']//xs:element[@name='tipo']">
+        <jaxb:property name="searchType"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventosLista']//xs:element[@name='resultado']">
+        <jaxb:property name="searchResult"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventosLista']//xs:element[@name='lingua']">
+        <jaxb:property name="language"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='buscaEventosLista']//xs:element[@name='objetos']">
+        <jaxb:property name="objectIds"/>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- TraceResponse -->
+    <jaxb:bindings node="//xs:complexType[@name='sroxml']">
+      <jaxb:class name="TraceResponse"/>
+
+      <jaxb:bindings node="//xs:complexType[@name='sroxml']//xs:element[@name='versao']">
+        <jaxb:property name="version"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='sroxml']//xs:element[@name='qtd']">
+        <jaxb:property name="count"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='sroxml']//xs:element[@name='TipoPesquisa']">
+        <jaxb:property name="searchType"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='sroxml']//xs:element[@name='TipoResultado']">
+        <jaxb:property name="searchResult"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='sroxml']//xs:element[@ref='tns:objeto']">
+        <jaxb:property name="objects"/>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- TraceObject -->
+    <jaxb:bindings node="//xs:complexType[@name='objeto']">
+      <jaxb:class name="TraceObject"/>
+
+      <jaxb:bindings node="//xs:complexType[@name='objeto']//xs:element[@name='numero']">
+        <jaxb:property name="number"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='objeto']//xs:element[@name='sigla']">
+        <jaxb:property name="acronym"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='objeto']//xs:element[@name='nome']">
+        <jaxb:property name="name"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='objeto']//xs:element[@name='categoria']">
+        <jaxb:property name="category"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='objeto']//xs:element[@name='erro']">
+        <jaxb:property name="error"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='objeto']//xs:element[@ref='tns:evento']">
+        <jaxb:property name="events"/>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- TraceEvent -->
+    <jaxb:bindings node="//xs:complexType[@name='eventos']">
+      <jaxb:class name="TraceEvent"/>
+
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='tipo']">
+        <jaxb:property name="type"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='status']">
+        <jaxb:property name="status"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='data']">
+        <jaxb:property name="date"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='hora']">
+        <jaxb:property name="time"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='descricao']">
+        <jaxb:property name="description"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='detalhe']">
+        <jaxb:property name="detail"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='recebedor']">
+        <jaxb:property name="receiver"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='documento']">
+        <jaxb:property name="document"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='comentario']">
+        <jaxb:property name="comment"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='local']">
+        <jaxb:property name="local"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='codigo']">
+        <jaxb:property name="code"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='cidade']">
+        <jaxb:property name="city"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='uf']">
+        <jaxb:property name="country"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='sto']">
+        <jaxb:property name="sto"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='amazoncode']">
+        <jaxb:property name="amazonCode"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@name='amazontimezone']">
+        <jaxb:property name="amazonTimeZone"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@ref='tns:destino']">
+        <jaxb:property name="destinations"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='eventos']//xs:element[@ref='tns:endereco']">
+        <jaxb:property name="address"/>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- TraceDestination -->
+    <jaxb:bindings node="//xs:complexType[@name='destinos']">
+      <jaxb:class name="TraceDestination"/>
+
+      <jaxb:bindings node="//xs:complexType[@name='destinos']//xs:element[@name='local']">
+        <jaxb:property name="local"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='destinos']//xs:element[@name='codigo']">
+        <jaxb:property name="code"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='destinos']//xs:element[@name='cidade']">
+        <jaxb:property name="cidade"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='destinos']//xs:element[@name='bairro']">
+        <jaxb:property name="neighborhood"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='destinos']//xs:element[@name='uf']">
+        <jaxb:property name="country"/>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- TraceAddress -->
+    <jaxb:bindings node="//xs:complexType[@name='enderecoMobile']">
+      <jaxb:class name="TraceAddress"/>
+
+      <jaxb:bindings node="//xs:complexType[@name='enderecoMobile']//xs:element[@name='codigo']">
+        <jaxb:property name="code"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='enderecoMobile']//xs:element[@name='cep']">
+        <jaxb:property name="zipCode"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='enderecoMobile']//xs:element[@name='logradouro']">
+        <jaxb:property name="street"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='enderecoMobile']//xs:element[@name='complemento']">
+        <jaxb:property name="complement"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='enderecoMobile']//xs:element[@name='numero']">
+        <jaxb:property name="number"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='enderecoMobile']//xs:element[@name='localidade']">
+        <jaxb:property name="locale"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='enderecoMobile']//xs:element[@name='uf']">
+        <jaxb:property name="country"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='enderecoMobile']//xs:element[@name='bairro']">
+        <jaxb:property name="neighborhood"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='enderecoMobile']//xs:element[@name='latitude']">
+        <jaxb:property name="latitude"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='enderecoMobile']//xs:element[@name='longitude']">
+        <jaxb:property name="longitude"/>
+      </jaxb:bindings>
+      <jaxb:bindings node="//xs:complexType[@name='enderecoMobile']//xs:element[@name='celular']">
+        <jaxb:property name="mobile"/>
+      </jaxb:bindings>
+    </jaxb:bindings>
+  </jaxb:bindings>
+</jaxb:bindings>

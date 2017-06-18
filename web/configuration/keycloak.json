@@ -1,0 +1,9 @@
+{
+  "realm": "bomrastreio",
+  "auth-server-url": "https://conta.bomrastreio.com.br/auth",
+  "ssl-required": "external",
+  "resource": "bomrastreio-web",
+  "credentials": {
+    "secret": "a63d1bac-0be4-4df8-81f6-d378126b1214"
+  }
+}

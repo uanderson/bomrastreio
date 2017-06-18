@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxws:bindings wsdlLocation="https://webservice.correios.com.br/service/rastro/Rastro.wsdl"
+    xmlns:jaxws="http://java.sun.com/xml/ns/jaxws">
+
+  <jaxws:package name="br.com.bomrastreio.api.correios.trace.wsdl"/>
+
+  <jaxws:bindings node="wsdl:definitions/wsdl:service[@name='rastro']">
+    <jaxws:class name="TraceWebServiceWrapper"/>
+  </jaxws:bindings>
+
+  <jaxws:bindings node="wsdl:definitions/wsdl:portType[@name='Service']">
+    <jaxws:class name="TraceWebService"/>
+
+    <jaxws:bindings node="wsdl:operation[@name='buscaEventos']">
+      <jaxws:method name="traceOne"/>
+    </jaxws:bindings>
+
+    <jaxws:bindings node="wsdl:operation[@name='buscaEventosLista']">
+      <jaxws:method name="trace"/>
+    </jaxws:bindings>
+  </jaxws:bindings>
+
+</jaxws:bindings>
