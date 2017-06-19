@@ -1,4 +1,4 @@
-# BomRastreio track & trace
+# BomRastreio
 
 ## Introduction
 
